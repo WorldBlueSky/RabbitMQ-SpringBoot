@@ -7,6 +7,8 @@ import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -127,6 +129,16 @@ class DemoApplicationTests {
     public void dead(){
         // 使用点对点模型，然后中间队列中的消息过期进入死信队列中，死信队列消费者对其进行消费
         rabbitTemplate.convertAndSend("deadQueue","过期时间的消息!");
+    }
+
+    @Test
+    public void aaaa1(){
+           rabbitTemplate.convertAndSend("queue1", "发送消息");
+    }
+
+    @Test
+    public void aaaa(){
+        System.out.println(new Date());
     }
 
 }
